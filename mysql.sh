@@ -50,7 +50,7 @@ VALIDATE $? "Starting Mysql-server"
 #Below code will be useful for idempotent nature
 
 mysql -h db.iamzaheer.online -uroot -pExpenseApp@1 -e 'show databases;' &>>$LOGFILE
-if [ $? -ne o ]
+if [ $? -ne 0 ]
 then 
      mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
      VALIDATE $? "Mysql Root Password Setup"
