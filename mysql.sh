@@ -57,15 +57,3 @@ then
 else
     echo -e "Mysql Root Password is already setup...$C SKIP $N"
 fi
-
-dnf module disable nodejs -y &>>$LOGFILE
-VALIDATE $? "Disabling default nodejs"
-
-dnf module enable nodejs:20 -y &>>$LOGFILE
-VALIDATE $? "Enabling nodejs:20 version"
-
-dnf install nodejs -y &>>$LOGFILE
-VALIDATE $? "Installing nodejs"
-
-useradd expense
-VALIDATE $? "Creating expense user"
