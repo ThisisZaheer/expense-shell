@@ -14,7 +14,7 @@ C="\e[36m"
 N="\e[0m"
 
 echo "Please enter DB password:"
-read -s mysql_root_password
+read mysql_root_password
 
 if [ $USERID -ne 0 ]
 then
