@@ -58,3 +58,6 @@ VALIDATE $? "Downloading backend code"
 cd /app
 unzip /tmp/backend.zip
 VALIDATE $? "Extracted backend code"
+
+npm install
+VALIDATE $? "Installing nodejs dependencies"
