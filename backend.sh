@@ -13,6 +13,9 @@ M="\e[35m"
 C="\e[36m"
 N="\e[0m"
 
+echo "Please enter DB password:"
+read -s mysql_root_password
+
 if [ $USERID -ne 0 ]
 then
    echo "Please run this Script as root access"
@@ -78,9 +81,8 @@ VALIDATE $? "Enabling Backend"
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing Mysql Client"
 
-mysql -h db.iamzaheer.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGFILE
+mysql -h db.iamzaheer.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting Backend"
-
