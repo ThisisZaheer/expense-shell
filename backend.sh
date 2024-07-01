@@ -75,3 +75,12 @@ VALIDATE $? "Start Backend"
 systemctl enable backend
 VALIDATE $? "Enable Backend"
 
+dnf install mysql -y &>>$LOGFILE
+VALIDATE $? "Installing Mysql Client"
+
+mysql -h db.iamzaheer.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGFILE
+VALIDATE $? "Schema loading"
+
+systemctl restart backend &>>$LOGFILE
+VALIDATE $? "Restarting Backend"
+
